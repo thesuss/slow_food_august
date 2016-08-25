@@ -1,7 +1,6 @@
 require 'pry'
 Given(/^a user with username "([^"]*)", status "([^"]*)" and password "([^"]*)" exists$/) do |username, status, password|
-   status = true
-   owner = User.new(username: username, password: password, admin: status)
+   owner = User.new(username: username, password: password, admin: true)
    owner.save
  end
 
@@ -24,7 +23,6 @@ end
 
 When(/^I fill in "([^"]*)" with "([^"]*)"$/) do |element, text|
   fill_in element, with: text
-     binding.pry
 end
 
 When(/^I click "([^"]*)" button$/) do |button|
