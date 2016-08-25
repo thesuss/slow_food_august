@@ -3,7 +3,8 @@ Feature: As a visitor
   I would like to see a 'log in' or 'register' button on the home page.
 
 Scenario: Allows a visitor to access a registration page
-  Given I am on the "home page"
+  Given a user with username "user" and password "user" exists
+  And I am on the "home page"
   And I click on the "Log In" link
   Then I should be on the registration page
   When I fill in "Username" with "user"

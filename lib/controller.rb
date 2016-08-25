@@ -11,22 +11,14 @@ class SlowFood < Sinatra::Base
   register Sinatra::Warden
   set :session_secret, "supersecret"
 
-  #Create a test User
-  if User.count == 0
-   @user = User.create(username: "user")
-   @user.password = "user"
-   @user.admin = false
-   @user.save
-  end
+  # #Create a test User
+  # if User.count == 0
+  #  @user = User.create(username: "user")
+  #  @user.password = "user"
+  #  @user.admin = false
+  #  @user.save
+  # end
 
-  #Create a test Owner
-  if User.username != "owner"
-    @owner = User.new
-    @owner.username = "owner"
-    @owner.password = "password"
-    @owner.admin = true
-    @owner.save
-  end
   use Warden::Manager do |config|
     # Tell Warden how to save our User info into a session.
     # Sessions can only take strings, not Ruby code, we'll store

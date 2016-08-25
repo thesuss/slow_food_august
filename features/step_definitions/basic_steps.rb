@@ -1,4 +1,16 @@
-Given(/^I am on the "([^"]*)"$/) do |page|
+require 'pry'
+Given(/^a user with username "([^"]*)", status "([^"]*)" and password "([^"]*)" exists$/) do |username, status, password|
+   status = true
+   owner = User.new(username: username, password: password, admin: status)
+   owner.save
+ end
+
+Given(/^a user with username "([^"]*)" and password "([^"]*)" exists$/) do |username, password|
+   user = User.new(username: username, password: password)
+   user.save
+end
+
+And(/^I am on the "([^"]*)"$/) do |page|
   visit '/'
 end
 
@@ -12,6 +24,7 @@ end
 
 When(/^I fill in "([^"]*)" with "([^"]*)"$/) do |element, text|
   fill_in element, with: text
+     binding.pry
 end
 
 When(/^I click "([^"]*)" button$/) do |button|
