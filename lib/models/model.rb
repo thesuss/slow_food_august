@@ -6,7 +6,7 @@ class User
 
   property :id, Serial, key: true
   property :username, String, length: 128
-  property :password, BCryptHash
+  property :password, String #BCryptHash
   property :admin, Boolean, default: false
 
   def authenticate(attempted_password)
@@ -15,13 +15,6 @@ class User
     else
       false
     end
-  end
-
-  def create_owner
-    @owner = User.create(username: "owner")
-    @owner.password = "owner"
-    @owner.admin = true
-    @owner.save
   end
 
 end

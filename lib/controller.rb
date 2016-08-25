@@ -1,4 +1,5 @@
 require 'bundler'
+require 'pry'
 Bundler.require
 Dir[File.join(File.dirname(__FILE__), 'models', '*.rb')].each { |file| require file }
 require_relative 'helpers/data_mapper'
@@ -14,9 +15,18 @@ class SlowFood < Sinatra::Base
   if User.count == 0
    @user = User.create(username: "user")
    @user.password = "user"
+   @user.admin = false
    @user.save
   end
 
+  #Create a test Owner
+  if User.username != "owner"
+    @owner = User.new
+    @owner.username = "owner"
+    @owner.password = "password"
+    @owner.admin = true
+    @owner.save
+  end
   use Warden::Manager do |config|
     # Tell Warden how to save our User info into a session.
     # Sessions can only take strings, not Ruby code, we'll store
@@ -51,12 +61,13 @@ class SlowFood < Sinatra::Base
     erb :login
   end
 
+
   # Login in should direct to logged-in page where you can add food, etc.
 
   post '/auth/login' do
     env['warden'].authenticate!
     flash[:success] = "Successfully logged in #{current_user.username}"
-    if current_user.admin = true
+    if current_user.admin == true
       redirect '/protected'
 
     elsif session[:return_to].nil?
