@@ -4,7 +4,9 @@ Feature: As a restaurant owner
 
 Scenario: Allows an owner to add information
   Given I am on the "protected" page
-  And I am logged in
-  When I fill in "information" with "text"
-  And I click "Save" button
-  Then I should see "Information saved"
+  And I fill in "Username" with "admin"
+  And I fill in "Password" with "admin"
+  And I click "Log In" button
+  Then I should be logged in
+  And I should still be on the protected page
+  Then I should see "information"
