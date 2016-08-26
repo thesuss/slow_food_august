@@ -9,4 +9,4 @@ Scenario: Allows an owner to add information
   And I click "Log In" button
   Then I should be logged in
   And I should still be on the protected page
-  Then I should see "information"
+  Then I should see "Information"
