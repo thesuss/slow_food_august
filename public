@@ -1,0 +1,7 @@
+get '/lib/views/layout.erb' do
+  erb :my_view
+end
+
+<link href="<%= url('/style.css') %>" rel="stylesheet" type="text/css" />
+
+html {font: 11px/150% arial,tahoma,Verdana, Helvetica, sans-serif;color:#000;}
