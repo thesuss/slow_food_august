@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<link rel=stylesheet href=style.css type="text/css" media="screen">
+</head>
 <body>
 <title>Sinatra Warden</title>
 
@@ -16,7 +19,7 @@
   <% end %>
 
   <% if flash[:success] %>
-    <div style="color:green;">
+    <div style="color:blue;">
       <%= flash[:success] %>
     </div>
   <% end %>
@@ -28,5 +31,6 @@
   <% end %>
 
   <%= yield %>
+
   </body>
 </html>
