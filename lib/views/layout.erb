@@ -5,31 +5,10 @@
 
   <h1>Slow food tastes better</h1>
 
-  <script language="JavaScript">
-  var i = 0; var path = new Array();
-
-  // LIST OF IMAGES
-  path[0] = https://pixabay.com/static/uploads/photo/2015/05/31/13/59/salad-791891_960_720.jpg;
-  path[1] = https://pixabay.com/static/uploads/photo/2016/08/18/18/34/tomatoes-1603601_960_720.jpg;
-  path[2] = https://pixabay.com/static/uploads/photo/2015/06/28/15/14/pancake-824610_960_720.jpg;
-  path[3] = https://pixabay.com/static/uploads/photo/2013/10/16/22/34/bread-196511_960_720.jpg;
-  path[3] = https://pixabay.com/static/uploads/photo/2015/04/08/13/14/food-712667_960_720.jpg;
-
-  function swapImage()
-  {
-  document.slide.src = path[i];
-  if(i < path.length - 1) i++;
-  else i = 0;
-  setTimeout("swapImage()",1000);
-  }
-  window.onload=swapImage;
-  </script>
-
 </head>
 <body>
 
 <title>Sinatra Warden</title>
-
 
 <style>
 h1 {
@@ -43,7 +22,6 @@ h1 {
     font-family:cursive;
 }
 </style>
-
 
 <p>
   <% if current_user %>
@@ -76,12 +54,33 @@ h1 {
 }
 </style>
 
-
-<center>
-<img height="500" name="slide" src=https://pixabay.com/static/uploads/photo/2015/05/31/13/59/salad-791891_960_720.jpg width="800" />
-</center>
+<body>
 
 
+<div class="w3-content w3-section" style="max-width:500px">
+  <img class="mySlides" src=https://pixabay.com/static/uploads/photo/2015/05/31/13/59/salad-791891_960_720.jpg style="width:200%">
+  <img class="mySlides" src=https://pixabay.com/static/uploads/photo/2016/08/18/18/34/tomatoes-1603601_960_720.jpg style="width:200%">
+  <img class="mySlides" src=https://pixabay.com/static/uploads/photo/2015/06/28/15/14/pancake-824610_960_720.jpg style="width:200%">
+  <img class="mySlides" src=https://pixabay.com/static/uploads/photo/2013/10/16/22/34/bread-196511_960_720.jpg style="width:200%">
+  <img class="mySlides" src=https://pixabay.com/static/uploads/photo/2015/04/08/13/14/food-712667_960_720.jpg style="width:200%">
+</div>
 
-  </body>
+
+<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}
+    x[myIndex-1].style.display = "block";
+    setTimeout(carousel, 4000);
+}
+</script>
+
 </html>
