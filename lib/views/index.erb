@@ -1,0 +1,25 @@
+
+<div class="bildspel" style="margin: 0px auto;">
+  <img class="mySlides" src="img/mozz.jpg">
+  <img class="mySlides" src="img/tomat.jpg">
+  <img class="mySlides" src="img/muffin.jpg">
+  </div>
+
+
+<script>
+var myIndex = 0;
+carousel();
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}
+    x[myIndex-1].style.display = "block";
+    setTimeout(carousel, 4000);
+}
+</script>
+</body>
+</html>
